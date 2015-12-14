@@ -27,7 +27,7 @@ DIRECTIVES are html annotations that trigger Javascript behaviors.
             description: 'A good shape',
             canPurchase: false,
             soldOut: false,
-            image: 'images/docecahedron.jpg'
+            image: './images/dodecahedron.jpg'
         },
         {
             name: "Amethyst",
@@ -35,7 +35,7 @@ DIRECTIVES are html annotations that trigger Javascript behaviors.
             description: "Purple! Perfect for a Vikings' fan",
             canPurchase: true,
             soldOut: false,
-            image: 'images/amethyst.jpg'
+            image: './images/ametyst.jpg'
         }
     ];
 })();

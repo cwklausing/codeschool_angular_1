@@ -14,25 +14,45 @@
 <body>
 <!--ng-conroller: directive, "StoreCont": Controller name, "store": alias-->
 <!--The scope of this controller is ONLY within the div!-->
-<div ng-controller="StoreController as store">
-    <h1>Gem Store!</h1>
-    <!--iterate over 'x' in the location-->
-    <div ng-repeat="product in store.product">
-        <h3>{{product.name}}</h3>
-        <!--The pipe sends the output into the filter, 'currency'-->
-        <!--Other filters include:
-        date: {{'1388123412323' | date:'MM/dd/yyy @ h:mma}}
-        case: {{'some words' | uppercase}}
-        limit characters: {{'Somewords | limitTo: 6}}
-        limit array: <li ng-repeat="x in cont.thing | limitTo:3>
-        orderBy: <li ng-repeat="product in store.products | orderBy: 'price'">
-        -->
-        <h4>{{product.price | currency}}</h4>
-        <p>{{product.description}}</p>
-        <
-        <button ng-show="product.canPurchase">Add to Cart</button>
+<main class="container">
+    <div ng-controller="StoreController as store">
+        <h1>Gem Store!</h1>
+        <!--iterate over 'x' in the location-->
+        <div ng-repeat="product in store.product">
+            <h3>{{product.name}}</h3>
+            <!--The pipe sends the output into the filter, 'currency'-->
+            <!--Other filters include:
+            date: {{'1388123412323' | date:'MM/dd/yyy @ h:mma}}
+            case: {{'some words' | uppercase}}
+            limit characters: {{'Somewords | limitTo: 6}}
+            limit array: <li ng-repeat="x in cont.thing | limitTo:3>
+            orderBy: <li ng-repeat="product in store.products | orderBy: 'price'">
+            -->
+            <h4>{{product.price | currency}}</h4>
+
+            <div >
+                <p>{{product.description}}</p>
+            </div>
+
+            <!--ng-src gives the controller time to load until the expression evaluates-->
+            <img ng-src="{{product.image}}">
+            <section ng-init="tab = 1">
+                <ul class="nav nav-pills">
+                    <li ng-class="active:tab === 1"><a href ng-click="tab = 1">Description</a></li>
+                    <li ng-class="active:tab === 2"><a href ng-click="tab = 2">Specifications</a></li>
+                    <li ng-class="active:tab === 3"><a href ng-click="tab = 3">Reviews</a></li>
+                </ul>
+
+            </section>
+            <button ng-show="product.canPurchase">Add to Cart</button>
+        </div>
     </div>
-</div>
+</main>
+
+
+<!--Bootstrap Stuff
+    2-way binding: expressions are reevaluated when a property changes
+-->
 
 <!--We use ###ng-controller### anytime we want to access an Angular controller-->
 <!--Codeschool Notes:-->
