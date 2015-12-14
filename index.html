@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--Directive to attach the application module to the page-->
+<html ng-app="store" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Experiment</title>
+    <!--Bring in bootstrap styling-->
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
+    <!--Bring in angular min file-->
+    <script type="text/javascript" src="vendors/angular.min.js"></script>
+    <!--bring in our app.js file-->
+    <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+<!--ng-conroller: directive, "StoreCont": Controller name, "store": alias-->
+<!--The scope of this controller is ONLY within the div!-->
+<div ng-controller="StoreController as store">
+    <h1>Gem Store!</h1>
+    <!--iterate over 'x' in the location-->
+    <div ng-repeat="product in store.product">
+        <h3>{{product.name}}</h3>
+        <!--The pipe sends the output into the filter, 'currency'-->
+        <!--Other filters include:
+        date: {{'1388123412323' | date:'MM/dd/yyy @ h:mma}}
+        case: {{'some words' | uppercase}}
+        limit characters: {{'Somewords | limitTo: 6}}
+        limit array: <li ng-repeat="x in cont.thing | limitTo:3>
+        orderBy: <li ng-repeat="product in store.products | orderBy: 'price'">
+        -->
+        <h4>{{product.price | currency}}</h4>
+        <p>{{product.description}}</p>
+        <
+        <button ng-show="product.canPurchase">Add to Cart</button>
+    </div>
+</div>
+
+<!--We use ###ng-controller### anytime we want to access an Angular controller-->
+<!--Codeschool Notes:-->
+<!--Benefits of Angular:
+ 1. is really easy to test--should do that.
+ 2. Responsive
+ 3. Plays well with jQuery
+ 4. Helps organize javascript
+  -->
+
+<!--Angular uses ###Directives###
+    A directive is a marker on an HTML tag that tells Angular
+    to run some JavaScript code-->
+
+</body>
+</html>
